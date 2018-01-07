@@ -107,6 +107,7 @@ func GetClientOutOfCluster() kubernetes.Interface {
 	return clientset
 }
 
+// GetFunctionClientInCluster returns function clientset to the request from inside of cluster
 func GetFunctionClientInCluster() (versioned.Interface, error) {
 	config, err := rest.InClusterConfig()
 	if err != nil {
@@ -120,6 +121,7 @@ func GetFunctionClientInCluster() (versioned.Interface, error) {
 	return kubelessClient, nil
 }
 
+// GetFunctionClientOutCluster returns function clientset to the request from outside of cluster
 func GetFunctionClientOutCluster() (versioned.Interface, error) {
 	config, err := BuildOutOfClusterConfig()
 	if err != nil {
